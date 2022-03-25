@@ -13,10 +13,10 @@ echo -e "${BLUE}❯ ${CYAN}Installing golangci-lint ${YELLOW}${GOLANGCILINT_VERS
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" "${GOLANGCILINT_VERSION}"
 
 echo -e "${BLUE}❯ ${CYAN}Installing richgo ...${RESET}"
-go get -u github.com/kyoh86/richgo
+go install github.com/kyoh86/richgo@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing nancy ...${RESET}"
-go get -u github.com/sonatype-nexus-community/nancy
+go install github.com/sonatype-nexus-community/nancy@latest
 
 rm -rf "$(go env GOPATH)/.cache/go-build"
 echo -e "${BLUE}❯ ${GREEN}Tools install completed${RESET}"
