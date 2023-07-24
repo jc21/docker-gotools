@@ -18,6 +18,9 @@ go install github.com/kyoh86/richgo@latest
 echo -e "${BLUE}❯ ${CYAN}Installing nancy ...${RESET}"
 go install github.com/sonatype-nexus-community/nancy@latest
 
+echo -e "${BLUE}❯ ${CYAN}Installing govulncheck ...${RESET}"
+go install golang.org/x/vuln/cmd/govulncheck@latest
+
 echo -e "${BLUE}❯ ${CYAN}Installing tparse ...${RESET}"
 go install github.com/mfridman/tparse@latest
 
