@@ -24,6 +24,9 @@ go install golang.org/x/vuln/cmd/govulncheck@latest
 echo -e "${BLUE}❯ ${CYAN}Installing tparse ...${RESET}"
 go install github.com/mfridman/tparse@latest
 
+echo -e "${BLUE}❯ ${CYAN}Installing go-junit-report ...${RESET}"
+go install github.com/jstemmer/go-junit-report@latest
+
 rm -rf "$(go env GOPATH)/.cache/go-build"
 echo -e "${BLUE}❯ ${GREEN}Tools install completed${RESET}"
 
