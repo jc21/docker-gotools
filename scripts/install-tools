@@ -8,6 +8,7 @@ GREEN='\E[1;32m'
 RESET='\E[0m'
 
 GOLANGCILINT_VERSION=$(curl -sSfL "https://api.github.com/repos/golangci/golangci-lint/releases/latest" | jq -r '.tag_name')
+GSA_VERSION=$(curl -sSfL "https://api.github.com/repos/Zxilly/go-size-analyzer/releases/latest" | jq -r '.tag_name')
 
 echo -e "${BLUE}❯ ${CYAN}Installing golangci-lint ${YELLOW}${GOLANGCILINT_VERSION}...${RESET}"
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" "${GOLANGCILINT_VERSION}"
@@ -26,6 +27,12 @@ go install github.com/mfridman/tparse@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing go-junit-report ...${RESET}"
 go install github.com/jstemmer/go-junit-report@latest
+
+echo -e "${BLUE}❯ ${CYAN}Installing go-size-analyzer ...${RESET}"
+wget -O /tmp/go-size-analyzer_linux_amd64.tar.gz "https://github.com/Zxilly/go-size-analyzer/releases/download/${GSA_VERSION}/go-size-analyzer_linux_amd64.tar.gz"
+cd /usr/bin/
+tar -xzf "/tmp/go-size-analyzer_linux_amd64.tar.gz" gsa
+rm -rf "/tmp/go-size-analyzer_linux_amd64.tar.gz"
 
 rm -rf "$(go env GOPATH)/.cache/go-build"
 echo -e "${BLUE}❯ ${GREEN}Tools install completed${RESET}"
