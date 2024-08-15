@@ -10,7 +10,7 @@ RESET='\E[0m'
 GSA_VERSION=$(curl -sSfL "https://api.github.com/repos/Zxilly/go-size-analyzer/releases/latest" | jq -r '.tag_name')
 
 echo -e "${BLUE}❯ ${CYAN}Installing golangci-lint ...${RESET}"
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.58.0
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.60.1
 
 echo -e "${BLUE}❯ ${CYAN}Installing richgo ...${RESET}"
 go install github.com/kyoh86/richgo@latest
@@ -32,6 +32,9 @@ wget -O /tmp/go-size-analyzer_linux_amd64.tar.gz "https://github.com/Zxilly/go-s
 cd /usr/bin/
 tar -xzf "/tmp/go-size-analyzer_linux_amd64.tar.gz" gsa
 rm -rf "/tmp/go-size-analyzer_linux_amd64.tar.gz"
+
+echo -e "${BLUE}❯ ${CYAN}Installing go-mod-upgrade ...${RESET}"
+go install github.com/oligot/go-mod-upgrade@latest
 
 rm -rf "$(go env GOPATH)/.cache/go-build"
 echo -e "${BLUE}❯ ${GREEN}Tools install completed${RESET}"
