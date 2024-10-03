@@ -14,3 +14,6 @@ WORKDIR /workspace
 COPY scripts /scripts
 COPY files/.golangci.yml /.golangci.yml
 RUN /scripts/install-tools
+
+RUN git config --global --add safe.directory /workspace
+
