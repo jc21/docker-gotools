@@ -10,7 +10,7 @@ RESET='\E[0m'
 GSA_VERSION=$(curl -sSfL "https://api.github.com/repos/Zxilly/go-size-analyzer/releases/latest" | jq -r '.tag_name')
 
 echo -e "${BLUE}❯ ${CYAN}Installing golangci-lint ...${RESET}"
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.60.1
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing richgo ...${RESET}"
 go install github.com/kyoh86/richgo@latest
