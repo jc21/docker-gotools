@@ -44,20 +44,9 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh """docker build \\
-				--pull \\
-				--no-cache \\
-				-f docker/Dockerfile \\
-				-t jc21/${IMAGE}:${BUILD_TAG} \\
-				.
-				"""
-			}
-		}
-		stage('Push') {
-			steps {
 				withCredentials([usernamePassword(credentialsId: 'jc21-dockerhub', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
 					sh 'docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}"'
-					sh "docker push jc21/${IMAGE}:${BUILD_TAG}"
+					sh "./scripts/buildx --push -t docker.io/jc21/${IMAGE}:${BUILD_TAG}"
 				}
 			}
 		}

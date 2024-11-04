@@ -1,5 +1,4 @@
-FROM golang:latest as go
-
+FROM golang:latest AS go
 LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 RUN apt-get update \
@@ -10,10 +9,11 @@ RUN apt-get update \
 
 WORKDIR /workspace
 
+ARG TARGETPLATFORM
+
 # Gotools
 COPY scripts /scripts
 COPY files/.golangci.yml /.golangci.yml
 RUN /scripts/install-tools
 
 RUN git config --global --add safe.directory /workspace
-
