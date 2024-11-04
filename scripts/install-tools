@@ -18,25 +18,26 @@ case $TARGETPLATFORM in
 esac
 
 echo -e "${BLUE}❯ ${CYAN}Installing golangci-lint ...${RESET}"
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest || true
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing richgo ...${RESET}"
-go install github.com/kyoh86/richgo@latest || true
+go install github.com/kyoh86/richgo@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing govulncheck ...${RESET}"
-go install golang.org/x/vuln/cmd/govulncheck@latest || true
+go install golang.org/x/vuln/cmd/govulncheck@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing tparse ...${RESET}"
-go install github.com/mfridman/tparse@latest || true
+go install github.com/mfridman/tparse@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing go-junit-report ...${RESET}"
-go install github.com/jstemmer/go-junit-report@latest || true
+go install github.com/jstemmer/go-junit-report@latest
 
 echo -e "${BLUE}❯ ${CYAN}Installing go-test-coverage ...${RESET}"
-go install github.com/vladopajic/go-test-coverage/v2@latest || true
+# use `latest` again when we can use go 1.23
+go install github.com/vladopajic/go-test-coverage/v2@v2.10.1
 
 echo -e "${BLUE}❯ ${CYAN}Installing go-mod-upgrade ...${RESET}"
-go install github.com/oligot/go-mod-upgrade@latest || true
+go install github.com/oligot/go-mod-upgrade@latest
 
 rm -rf "$(go env GOPATH)/.cache/go-build"
 echo -e "${BLUE}❯ ${GREEN}Tools install completed${RESET}"
