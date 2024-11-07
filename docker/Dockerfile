@@ -1,9 +1,4 @@
-# locked to golang:1.22.8 for now
-# as there's a bug with qemu and go 1.23
-# its meant to be fixed in 1.23.3
-# but I guess we'll wait and see
-# https://github.com/golang/go/issues/69259
-FROM golang:1.22.8 AS go
+FROM golang:latest AS go
 LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 RUN apt-get update \
