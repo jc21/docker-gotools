@@ -7,6 +7,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir /workspace
 
+RUN echo "fs.file-max = 65535" > /etc/sysctl.conf
 WORKDIR /workspace
 
 ARG TARGETPLATFORM
