@@ -39,6 +39,9 @@ go install github.com/vladopajic/go-test-coverage/v2@v2.10.1
 echo -e "${BLUE}❯ ${CYAN}Installing go-mod-upgrade ...${RESET}"
 go install github.com/oligot/go-mod-upgrade@latest
 
+echo -e "${BLUE}❯ ${CYAN}Installing protoc-gen-go ...${RESET}"
+go install github.com/golang/protobuf/protoc-gen-go@latest
+
 echo -e "${BLUE}❯ ${CYAN}Installing go-size-analyzer ...${RESET}"
 wget -O "/tmp/go-size-analyzer_linux_$ARCH.tar.gz" "https://github.com/Zxilly/go-size-analyzer/releases/download/${GSA_VERSION}/go-size-analyzer_linux_amd64.tar.gz"
 cd /usr/bin/
