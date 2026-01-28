@@ -4,19 +4,6 @@ set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$DIR/.common.sh"
 
-GSA_VERSION=$(curl -sSfL "https://api.github.com/repos/Zxilly/go-size-analyzer/releases/latest" | jq -r '.tag_name')
-
-# Determine the correct binary file for the architecture given
-case $TARGETPLATFORM in
-	linux/arm64)
-		ARCH=arm64
-		;;
-
-	*)
-		ARCH=amd64
-		;;
-esac
-
 go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
 go install github.com/kyoh86/richgo@latest
 go install github.com/mfridman/tparse@latest
@@ -32,12 +19,6 @@ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 go install github.com/mwitkow/go-proto-validators/protoc-gen-govalidators@latest
 go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
-
-echo -e "${BLUE}❯ ${CYAN}Installing go-size-analyzer ...${RESET}"
-wget -O "/tmp/go-size-analyzer_linux_$ARCH.tar.gz" "https://github.com/Zxilly/go-size-analyzer/releases/download/${GSA_VERSION}/go-size-analyzer_linux_amd64.tar.gz"
-cd /usr/bin/
-tar -xzf "/tmp/go-size-analyzer_linux_$ARCH.tar.gz" gsa
-rm -rf "/tmp/go-size-analyzer_linux_$ARCH.tar.gz"
 
 echo -e "${BLUE}❯ ${CYAN}Installing task ...${RESET}"
 cd /usr
