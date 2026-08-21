@@ -15,6 +15,8 @@ ARG TARGETPLATFORM
 # Gotools
 COPY scripts /scripts
 COPY files/.golangci.yml /.golangci.yml
-RUN /scripts/install-tools
+RUN /scripts/install-tools \
+	&& go clean -cache \
+	&& go build std
 
 RUN git config --global --add safe.directory /workspace
